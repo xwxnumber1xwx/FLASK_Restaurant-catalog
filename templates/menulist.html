@@ -5,26 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'style.css')}}">
     <title>Menu</title>
 </head>
 
 <body>
-    <div>
-        <a href="{{url_for('showRestaurants')}}">Back</a>
-        <a href="{{url_for('newMenuItem', restaurant_id=restaurant_id)}}">New Item</a>
-    </div>
-    {% for item in menu %}
-    <div>
-        <p>
-            <a href="{{url_for('deleteMenuItem', restaurant_id=restaurant_id, menu_id= item.id)}}">X</a>
-            {{ item.name }}<span>{{ item.price }}</span>
-        </p>
-        <p>
-            {{ item.description }}<span>{{ item.course }}</span>
-            <a href="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id= item.id)}}">Edit</a>
-        </p>
-    </div>
-    {% endfor %}
+    <section class="big-menu">
+            <h1 class="title">{{restaurant.name}}</h1>
+            <div class="bar"></div>
+            <nav class="nav-container">
+                    <span class="nav-item">
+                            <a href="{{url_for('showRestaurants')}}">Restaurants</a>
+                    </span>
+                    <span class="nav-item">
+                            <a href="{{url_for('newMenuItem', restaurant_id=restaurant_id)}}">new Item</a>
+                    </span>
+                </nav>
+        {% for item in menu %}
+        <div class="restaurant-container item-container">
+                <p class="restaurant-list">
+                <a  class="delete-button" href="{{url_for('deleteMenuItem', restaurant_id=restaurant_id, menu_id= item.id)}}">X</a>
+                <span class="item-name">{{ item.name }}</span>
+                <span class="item-price">{{ item.price }}</span>
+                <span class="item-course">- {{ item.course }}</span>
+                <span class="item-description">{{ item.description }}</span>
+                <a class="edit-button" href="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id= item.id)}}">Edit</a>
+            </p>
+        </div>
+        {% endfor %}
+    </section>
 </body>
 
 </html>

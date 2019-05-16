@@ -14,12 +14,12 @@
         <h1 class="title">Restaurants</h1>
         <div class="bar"></div>
         <nav class="nav-container">
-            <div class="nav-item">
-                <a href="{{url_for('newRestaurant')}}">New Restaurant</a>
-            </div>
+            <span class="nav-item">
+                <a href="{{url_for('newRestaurant')}}">add Restaurant</a>
+            </span>
         </nav>
         {% for restaurant in restaurants %}
-        <article class="restaurant-container">
+        <div class="restaurant-container">
             <p class="restaurant-list">
                 <a class="delete-button" href="{{url_for('deleteRestaurant', restaurant_id=restaurant.id)}}">X</a>
                 <a class="item-name" href="{{url_for('showMenu', restaurant_id=restaurant.id)}}">
@@ -30,7 +30,7 @@
                     </a>
                 <a class="edit-button" href="{{url_for('editRestaurant', restaurant_id=restaurant.id)}}">Edit</a>
             </p>
-        </article>
+        </div>
         {% endfor %}
     </section>
 </body>

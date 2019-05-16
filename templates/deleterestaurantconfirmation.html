@@ -5,20 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'style.css')}}">
     <title>Delete restaurant</title>
 </head>
 
 <body>
-    <div>
-        <h2>Are you sure to delete this Restaurant?</h2>
-        <form action="{{url_for('deleteRestaurant', restaurant_id = restaurant.id)}}" method="post">
-            <p>
-                {{ restaurant.name }}
-            </p>
-            <input type="submit" value="Confirm">
+    <section class="visit-card">
+        <h2 class="vc-title">Are you sure to delete this Restaurant?</h2>
+        <form class="vc-form" action="{{url_for('deleteRestaurant', restaurant_id = restaurant.id)}}" method="post">
+            <span class="item-name vc-input-center">{{ restaurant.name }}</span>
+            <input class="vc-buttons vc-confirm" type="submit" value="Confirm">
         </form>
-        <a href="{{url_for('showRestaurants')}}">Cancel</a>
-    </div>
+        <a class="vc-buttons vc-cancel" href="{{url_for('showRestaurants')}}">Cancel</a>
+    </section>
 </body>
 
 </html>

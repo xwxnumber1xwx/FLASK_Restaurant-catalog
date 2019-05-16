@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Course</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'style.css')}}">
+    <title>Edit Dish</title>
 </head>
+
 <body>
-    <div>
-        <form action="{{url_for('editMenuItem', restaurant_id = restaurant_id, menu_id = item.id)}}" method="post">
-            <input type="text" maxlength="80" name="name" value="{{item.name}}" required>
-            <input type="text" maxlength="8" name="price" value="{{item.price}}" required>
-            <textarea type="text" maxlength="250" name="description" required>{{item.description}}</textarea>
-            <select name="course" required>
+    <section class="visit-card">
+        <form class="vc-form vc-edit" action="{{url_for('editMenuItem', restaurant_id = restaurant_id, menu_id = item.id)}}"
+            method="post">
+            <input class="item-name vc-input-name" type="text" maxlength="80" name="name" value="{{item.name}}" required>
+            <input class="item-price vc-input-price" type="text" maxlength="8" name="price" value="{{item.price}}" required>
+            <select class="item-course vc-input-course" name="course" required>
                 {% for course in courses %}
-                    <option value="{{course.course}}">{{course.course}}</option>
+                <option value="{{course.course}}">{{course.course}}</option>
                 {% endfor %}
             </select>
-            <input type="submit" value="Confirm">
+            <textarea class="item-description vc-input-desc" type="text" maxlength="250" name="description"
+                required>{{item.description}}</textarea>
+            <input class="vc-buttons vc-confirm" type="submit" value="Confirm">
         </form>
-        <a href="{{url_for('showMenu', restaurant_id = restaurant_id)}}">Cancel</a>
-    </div>
+        <a class="vc-buttons vc-cancel" href="{{url_for('showMenu', restaurant_id = restaurant_id)}}">Cancel</a>
+    </section>
 </body>
+
 </html>

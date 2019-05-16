@@ -10,6 +10,7 @@
 
 body {
     margin: 0;
+    color: #3E3E3E;
     background: #CBCACC;
     width: 100%;
     height: auto;
@@ -26,24 +27,34 @@ a {
     max-width: 1240px;
     min-height: 1754px;
     height: auto;
-    margin: 30vh auto auto;
+    margin: 10vh auto auto;
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
 }
 
 .nav-container {
-    background: #FFF;
+    background: transparent;
     position: absolute;
-    right: -120px;
-    top: 115px;
-    transform: rotate(-90deg);
+    width: 1454px;
+    right: -750px;
+    top: 852px;
+    ;
     z-index: -1;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
 }
 
 .nav-item {
+    background: #FFF;
     text-align: center;
     height: 50px;
     width: 200px;
+    float: right;
+    margin-left: 3px;
+    box-shadow: rgba(0, 0, 0, 0.3) -2px 1px 3px;
 }
 
 .nav-item a {
@@ -53,7 +64,6 @@ a {
 }
 
 .title {
-    color: #3E3E3E;
     text-align: center;
     font-weight: 100;
     padding: 50px 0 13.5px;
@@ -71,9 +81,9 @@ a {
 }
 
 .restaurant-container {
-    padding-left: 84px;
-    padding-right: 84px;
+    padding: 0 0 0 84px;
     width: 40%;
+    float: left;
     min-width: 300px;
 }
 
@@ -92,8 +102,113 @@ a {
 
 .edit-button {
     float: right;
+    margin-top: 12px;
 }
 
 .restaurant-list {
     margin: 30px;
+}
+
+.item-price {
+    float: right;
+}
+
+.item-description {
+    display: inline-block;
+    margin: 10px 0 0 70px;
+}
+
+.item-container {
+    height: 250px;
+    position: relative;
+}
+
+.item-course {
+    display: inline-block;
+}
+
+/* Visit card */
+
+.visit-card {
+    background: #FFF;
+    width: 578px;
+    height: 306px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+.vc-title {
+    text-align: center;
+    font-size: 30px;
+    margin: 20px auto 25px;
+    width: 300px;
+    font-weight: 100;
+}
+
+.vc-title-center {
+    margin: 70px auto 20px;
+}
+
+.vc-form {
+    margin: auto;
+    width: 450px;
+}
+
+.vc-edit {
+    margin: 80px auto 20px;
+}
+
+.vc-buttons {
+    font-family: 'ScriptMTBold', Arial, Helvetica;
+    color: #3E3E3E;
+    position: absolute;
+    font-size: 20px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    bottom: 20px;
+}
+
+.vc-confirm {
+    right: 20px;
+    cursor: pointer;
+}
+
+.vc-cancel {
+    left: 20px;
+}
+
+.vc-input-name {
+    width: 250px;
+}
+
+.vc-input-price {
+    width: 70px;
+}
+
+.vc-input-course {
+    width: 100px;
+}
+
+.vc-input-desc {
+    width: 335px;
+    height: 80px;
+    margin: 10px 0 0 100px;
+}
+
+.vc-input-center {
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 40px;
 }

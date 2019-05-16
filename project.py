@@ -66,7 +66,8 @@ def deleteRestaurant(restaurant_id):
 def showMenu(restaurant_id):
     session = databaseConnection()
     menu = session.query(MenuItem).filter_by(restaurant_id=restaurant_id).all()
-    return render_template('menulist.html', menu=menu, restaurant_id=restaurant_id)
+    restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    return render_template('menulist.html', menu=menu, restaurant=restaurant, restaurant_id=restaurant_id)
 
 # add NEW Menu Item
 @app.route('/restaurants/<int:restaurant_id>/new',  methods=['GET', 'POST'])
@@ -98,7 +99,7 @@ def editMenuItem(restaurant_id, menu_id):
         if form['price']:
             itemToEdit.price = form['price']
         if form['description']:
-            itemToEdit.price = form['description']
+            itemToEdit.description = form['description']
         if form['course']:
             itemToEdit.course = form['course']
         session.add(itemToEdit)
