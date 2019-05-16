@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Restaurant</title>
+    <title>Edit Course</title>
 </head>
 <body>
     <div>
-        <h2>{{restaurant.name}}</h2>
-        <form action="{{url_for('editRestaurant', restaurant_id = restaurant.id)}}" method="post">
-            <input type="text" name="name" placeholder="new name">
+        <form action="{{url_for('newRestaurant')}}" method="post">
+            <input type="text" maxlength="250" name="name" placeholder="Name" required>
             <input type="submit" value="Confirm">
         </form>
         <a href="{{url_for('showRestaurants')}}">Cancel</a>

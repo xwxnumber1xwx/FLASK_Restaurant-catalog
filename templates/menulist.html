@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Menu</title>
+</head>
+
+<body>
+    <div>
+        <a href="{{url_for('showRestaurants')}}">Back</a>
+        <a href="{{url_for('newMenuItem', restaurant_id=restaurant_id)}}">New Item</a>
+    </div>
+    {% for item in menu %}
+    <div>
+        <p>
+            <a href="{{url_for('deleteMenuItem', restaurant_id=restaurant_id, menu_id= item.id)}}">X</a>
+            {{ item.name }}<span>{{ item.price }}</span>
+        </p>
+        <p>
+            {{ item.description }}<span>{{ item.course }}</span>
+            <a href="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id= item.id)}}">Edit</a>
+        </p>
+    </div>
+    {% endfor %}
+</body>
+
+</html>
