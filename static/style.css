@@ -1,0 +1,99 @@
+@font-face {
+    font-family: 'Salina';
+    src: url('Salina\ Regular.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'ScriptMTBold';
+    src: url('./ScriptMTBold.ttf ') format('truetype')
+}
+
+body {
+    margin: 0;
+    background: #CBCACC;
+    width: 100%;
+    height: auto;
+    font-family: 'Salina', Arial, Helvetica;
+}
+
+a {
+    text-decoration: none;
+    color: #3E3E3E;
+}
+
+.big-menu {
+    background: #FFF;
+    max-width: 1240px;
+    min-height: 1754px;
+    height: auto;
+    margin: 30vh auto auto;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+}
+
+.nav-container {
+    background: #FFF;
+    position: absolute;
+    right: -120px;
+    top: 115px;
+    transform: rotate(-90deg);
+    z-index: -1;
+}
+
+.nav-item {
+    text-align: center;
+    height: 50px;
+    width: 200px;
+}
+
+.nav-item a {
+    font-size: 30px;
+    position: relative;
+    top: 10px;
+}
+
+.title {
+    color: #3E3E3E;
+    text-align: center;
+    font-weight: 100;
+    padding: 50px 0 13.5px;
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.bar {
+    max-width: 378px;
+    width: 40%;
+    margin: 0 auto 102.5px;
+    height: 3px;
+    padding-top: 0;
+    background: #3E3E3E;
+}
+
+.restaurant-container {
+    padding-left: 84px;
+    padding-right: 84px;
+    width: 40%;
+    min-width: 300px;
+}
+
+.item-name {
+    font-family: 'ScriptMTBold', Arial, Helvetica;
+    font-size: 30px
+}
+
+.delete-button {
+    font-size: 20px;
+    font-family: 'ScriptMTBold', Arial, Helvetica;
+    position: relative;
+    top: -18px;
+    left: 2px;
+}
+
+.edit-button {
+    float: right;
+}
+
+.restaurant-list {
+    margin: 30px;
+}
