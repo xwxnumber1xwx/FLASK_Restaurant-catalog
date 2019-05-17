@@ -9,9 +9,9 @@
 }
 
 body {
+    background: url('./restaurant.jpg.jpg');
     margin: 0;
     color: #3E3E3E;
-    background: #CBCACC;
     margin: auto;
     height: auto;
     font-family: 'Salina', Arial, Helvetica;

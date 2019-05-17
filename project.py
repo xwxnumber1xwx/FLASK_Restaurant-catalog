@@ -18,7 +18,7 @@ def index():
 def showRestaurants():
     session = databaseConnection()
     restaurants = session.query(Restaurant).all()
-    return render_template('restaurantlist.html', restaurants=restaurants)
+    return render_template('restaurant.html', restaurants=restaurants)
 
 # add NEW restaurant
 @app.route('/restaurants/new', methods=['GET', 'POST'])
@@ -28,7 +28,7 @@ def newRestaurant():
         newRestaurant = Restaurant(name=request.form['name'])
         session.add(newRestaurant)
         session.commit()
-        # flash('restaurant added on Database')
+        flash('restaurant %s added on Database' % request.form['name'])
         return redirect(url_for('showRestaurants'))
     else:
         return render_template('newrestaurant.html')
@@ -43,6 +43,7 @@ def editRestaurant(restaurant_id):
             restaurant.name = request.form['name']
             session.add(restaurant)
             session.commit()
+            flash('restaurant %s updated' % request.form['name'])
         return redirect(url_for('showRestaurants'))
     else:
         return render_template('editrestaurant.html', restaurant=restaurant)
@@ -53,6 +54,7 @@ def deleteRestaurant(restaurant_id):
     session = databaseConnection()
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     if request.method == 'POST':
+        flash('restaurant %s deleted' % restaurant.name)
         session.delete(restaurant)
         session.commit()
         return redirect(url_for('showRestaurants'))
@@ -67,7 +69,7 @@ def showMenu(restaurant_id):
     session = databaseConnection()
     menu = session.query(MenuItem).filter_by(restaurant_id=restaurant_id).all()
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
-    return render_template('menulist.html', menu=menu, restaurant=restaurant, restaurant_id=restaurant_id)
+    return render_template('menu.html', menu=menu, restaurant=restaurant, restaurant_id=restaurant_id)
 
 # add NEW Menu Item
 @app.route('/restaurants/<int:restaurant_id>/new',  methods=['GET', 'POST'])
@@ -79,7 +81,7 @@ def newMenuItem(restaurant_id):
                            description=form['description'], course=form['course'], restaurant_id=restaurant_id)
         session.add(newItem)
         session.commit()
-        # flash('element added')
+        flash('%s added on Database' % request.form['name'])
         return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
         courses = session.query(MenuItem).group_by('course').all()
@@ -104,7 +106,7 @@ def editMenuItem(restaurant_id, menu_id):
             itemToEdit.course = form['course']
         session.add(itemToEdit)
         session.commit()
-        # flash('Item updated')
+        flash('%s updated' % request.form['name'])
         return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
         courses = session.query(MenuItem).group_by('course').all()
@@ -117,6 +119,7 @@ def deleteMenuItem(restaurant_id, menu_id):
     item = session.query(MenuItem).filter_by(
         id=menu_id, restaurant_id=restaurant_id).one()
     if request.method == 'POST':
+        flash('%s deleted' % item.name)
         session.delete(item)
         session.commit()
         return redirect(url_for('showMenu', restaurant_id=restaurant_id))
