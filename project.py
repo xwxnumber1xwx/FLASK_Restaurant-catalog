@@ -123,7 +123,30 @@ def deleteMenuItem(restaurant_id, menu_id):
     else:
         return render_template('deletemenuconfirmation.html', item=item, restaurant_id=restaurant_id)
 
+# API Requests
 
+# List of all restaurants
+@app.route('/restaurants/JSON')
+def JSONRestaurants():
+    session = databaseConnection()
+    restaurants = session.query(Restaurant).all()
+    return jsonify(Restaurant =[i.serialize for i in restaurants])
+
+# Menu of one restaurant
+@app.route('/restaurants/<int:restaurant_id>/menu/JSON')
+def JSONmenu(restaurant_id):
+    session = databaseConnection()
+    items = session.query(MenuItem).filter_by(restaurant_id = restaurant_id).all()
+    return jsonify(MenuItem =[i.serialize for i in items])
+
+# one item from menu
+@app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON')
+def JSONitem(restaurant_id, menu_id):
+    session = databaseConnection()
+    item = session.query(MenuItem).filter_by(id=menu_id, restaurant_id=restaurant_id).one()
+    return jsonify(MenuItem =[item.serialize])
+
+# Database Connection
 def databaseConnection():
     DATABASE = 'sqlite:///restaurantmenu.db'
     engine = create_engine(DATABASE)
