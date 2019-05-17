@@ -12,7 +12,7 @@ body {
     margin: 0;
     color: #3E3E3E;
     background: #CBCACC;
-    width: 100%;
+    margin: auto;
     height: auto;
     font-family: 'Salina', Arial, Helvetica;
 }
@@ -25,26 +25,36 @@ a {
 .big-menu {
     background: #FFF;
     max-width: 1240px;
-    min-height: 1754px;
     height: auto;
     margin: 10vh auto auto;
     position: relative;
+    padding-bottom: 150px;
     box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
 }
 
-.nav-container {
-    background: transparent;
-    position: absolute;
-    width: 1454px;
-    right: -750px;
-    top: 852px;
-    ;
-    z-index: -1;
-    transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
+
+@media screen and (max-width: 1099px) {
+    .nav-container {
+        background: #FFF!important;
+        position: fixed;
+        width: 100%;
+        left: 0px;
+        bottom: 0;
+        z-index: 100;
+        border: 1px solid #3E3E3E;
+    }
+    .nav-item {
+        width: 50%!important;
+        display: block;
+        float: left!important;
+        box-shadow: none!important;
+        margin: 0!important;
+        border: 1px solid;
+        box-sizing: border-box;
+    }
+    .restaurant-list {
+        margin: 50px 10px!important;
+    }
 }
 
 .nav-item {
@@ -80,11 +90,43 @@ a {
     background: #3E3E3E;
 }
 
+@media screen and (min-width: 1100px) {
+    body {
+        width: 80%;
+    }
+    .nav-container {
+        background: transparent;
+        position: absolute;
+        width: 1454px;
+        right: -753px;
+        top: 852px;
+        transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+    }
+    .item-container{
+        height: 250px!important;
+    }
+    .restaurant-container {
+        padding: 0 0 0 84px;
+        width: 40% !important;
+        float: left;
+        min-width: 300px;
+    }
+    .big-menu {
+        min-height: 1754px;
+    }
+}
+
 .restaurant-container {
-    padding: 0 0 0 84px;
-    width: 40%;
-    float: left;
-    min-width: 300px;
+   /* width: 80%; */
+}
+
+.item-container {
+    /*height: 100px;*/
+    position: relative;
 }
 
 .item-name {
@@ -106,7 +148,7 @@ a {
 }
 
 .restaurant-list {
-    margin: 30px;
+    margin: 30px 10px;
 }
 
 .item-price {
@@ -118,17 +160,12 @@ a {
     margin: 10px 0 0 70px;
 }
 
-.item-container {
-    height: 250px;
-    position: relative;
-}
-
 .item-course {
     display: inline-block;
 }
 
 /* Visit card */
-
+@media screen and (min-width: 580px) {
 .visit-card {
     background: #FFF;
     width: 578px;
@@ -142,6 +179,31 @@ a {
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
+}
+}
+
+
+@media screen and (max-width: 579px) {
+    .visit-card {
+        position: absolute;
+        background: #FFF;
+        width: 100%;
+        height: auto;
+        padding-bottom: 30px;
+        min-height: 300px;
+        top: 50%;
+        transform: translate(0,-50%);
+    }
+    .vc-input-name, .vc-form, .vc-edit, .vc-input-name,.vc-input-price, .vc-input-course, .vc-input-desc  {
+        width: 90%!important;
+        margin: 10px!important;
+        float: unset!important;
+    }
+
+    .vc-buttons {
+        bottom: 0!important;
+        background: #FFF!important;
+    }
 }
 
 .vc-title {
