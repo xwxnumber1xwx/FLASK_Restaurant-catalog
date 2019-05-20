@@ -3,33 +3,21 @@
 <section class="big-menu">
     <h1 class="title">Restaurants</h1>
     <div class="bar"></div>
-    <div class="loggin-info">
-        logged as {{name}} <img class="picture" src="{{picture}}" alt="picture from {{name}}">
-    </div>
     {% include 'messages.html' %}
     <nav class="nav-container">
         <span class="nav-item">
-            <a href="{{url_for('newRestaurant')}}">add New</a>
-        </span>
-        <span class="nav-item">
-            <a href="{{url_for('disconnect')}}">Logout</a>
+            <a href="{{url_for('login')}}">Login</a>
         </span>
     </nav>
     {% for restaurant in restaurants %}
     <div class="restaurant-container">
         <p class="restaurant-list">
-            {% if restaurant.user_id == user_id %}
-            <a class="delete-button" href="{{url_for('deleteRestaurant', restaurant_id=restaurant.id)}}">X</a>
-            {% endif %}
             <a class="item-name" href="{{url_for('showMenu', restaurant_id=restaurant.id)}}">
                 {{ restaurant.name[:25] }}
                 {% if  restaurant.name|length > 25 %}
                 ...
                 {% endif %}
             </a>
-            {% if restaurant.user_id == user_id %}
-            <a class="edit-button" href="{{url_for('editRestaurant', restaurant_id=restaurant.id)}}">Edit</a>
-            {% endif %}
         </p>
     </div>
     {% endfor %}

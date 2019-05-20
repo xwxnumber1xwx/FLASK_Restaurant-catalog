@@ -32,7 +32,6 @@ a {
     box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
 }
 
-
 @media screen and (max-width: 1099px) {
     .nav-container {
         background: #FFF!important;
@@ -84,7 +83,7 @@ a {
 .bar {
     max-width: 378px;
     width: 40%;
-    margin: 0 auto 102.5px;
+    margin: 0 auto;
     height: 3px;
     padding-top: 0;
     background: #3E3E3E;
@@ -106,7 +105,7 @@ a {
         -ms-transform: rotate(-90deg);
         -o-transform: rotate(-90deg);
     }
-    .item-container{
+    .item-container {
         height: 250px!important;
     }
     .restaurant-container {
@@ -121,7 +120,7 @@ a {
 }
 
 .restaurant-container {
-   /* width: 80%; */
+    /* width: 80%; */
 }
 
 .item-container {
@@ -165,23 +164,23 @@ a {
 }
 
 /* Visit card */
-@media screen and (min-width: 580px) {
-.visit-card {
-    background: #FFF;
-    width: 578px;
-    height: 306px;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-}
-}
 
+@media screen and (min-width: 580px) {
+    .visit-card {
+        background: #FFF;
+        width: 578px;
+        height: 306px;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+    }
+}
 
 @media screen and (max-width: 579px) {
     .visit-card {
@@ -192,14 +191,13 @@ a {
         padding-bottom: 30px;
         min-height: 300px;
         top: 50%;
-        transform: translate(0,-50%);
+        transform: translate(0, -50%);
     }
-    .vc-input-name, .vc-form, .vc-edit, .vc-input-name,.vc-input-price, .vc-input-course, .vc-input-desc  {
+    .vc-input-name, .vc-form, .vc-edit, .vc-input-name, .vc-input-price, .vc-input-course, .vc-input-desc {
         width: 90%!important;
         margin: 10px!important;
         float: unset!important;
     }
-
     .vc-buttons {
         bottom: 0!important;
         background: #FFF!important;
@@ -273,4 +271,89 @@ a {
     transform: translate(-50%, -50%);
     text-align: center;
     font-size: 40px;
+}
+
+.loggin-info {
+    margin: auto;
+    display: table;
+}
+
+.picture {
+    width: 30px;
+    height: 30px;
+    transform: translate(0, 40%);
+    -webkit-transform: translate(0, 40%);
+    -moz-transform: translate(0, 40%);
+    -ms-transform: translate(0, 40%);
+    -o-transform: translate(0, 40%);
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.google-button {
+    cursor: pointer;
+    height: 40px;
+    border-width: 0;
+    background: white;
+    color: #737373;
+    border-radius: 5px;
+    white-space: nowrap;
+    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
+    transition-property: background-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
+    padding: 0;
+}
+
+.google-button:focus, .google-button:hover {
+    box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.google-button:active {
+    background-color: #e5e5e5;
+    box-shadow: none;
+    transition-duration: 10ms;
+}
+
+.google-button__icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 8px 0 8px 8px;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+}
+
+.google-button__icon--plus {
+    width: 27px;
+}
+
+.google-button__text {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 24px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Roboto', arial, sans-serif;
+}
+
+
+.vc-google-center {
+    border: 1px solid #3E3E3E;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+.messages {
+    width: max-content;
+    margin: 30px auto 72.5px;
 }

@@ -4,36 +4,22 @@
 <section class="big-menu">
     <h1 class="title">{{restaurant.name}}</h1>
     <div class="bar"></div>
-    <div class="loggin-info">
-        logged as {{name}} <img class="picture" src="{{picture}}" alt="picture from {{name}}">
-    </div>
     {% include 'messages.html' %}
     <nav class="nav-container">
         <span class="nav-item">
             <a href="{{url_for('showRestaurants')}}">Restaurants</a>
         </span>
         <span class="nav-item">
-            <a href="{{url_for('newMenuItem', restaurant_id=restaurant_id)}}">new Item</a>
-        </span>
-        <span class="nav-item">
-            <a href="{{url_for('disconnect')}}">Logout</a>
+            <a href="{{url_for('login')}}">Login</a>
         </span>
     </nav>
     {% for item in menu %}
     <div class="restaurant-container item-container">
         <p class="restaurant-list">
-            {% if item.user_id == user_id %}
-            <a class="delete-button"
-                href="{{url_for('deleteMenuItem', restaurant_id=restaurant_id, menu_id= item.id)}}">X</a>
-            {% endif %}
             <span class="item-name">{{ item.name }}</span>
             <span class="item-price">{{ item.price }}</span>
             <span class="item-course">- {{ item.course }}</span>
             <span class="item-description">{{ item.description }}</span>
-            {% if item.user_id == user_id %}
-            <a class="edit-button"
-                href="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id= item.id)}}">Edit</a>
-            {% endif %}
         </p>
     </div>
     {% endfor %}

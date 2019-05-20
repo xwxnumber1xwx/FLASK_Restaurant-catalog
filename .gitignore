@@ -1,7 +1,8 @@
 # Don't track content of these folders
 node_modules/
 __pycache__/
-
+secret_keys/
+client_secret.json
 
 # Compiled source #
 ###################
