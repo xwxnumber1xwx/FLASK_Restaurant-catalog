@@ -62,6 +62,7 @@ def login():
                 else:
                     return jsonify({'message': 'Wrong email or password'}), 401
             except:
+                print('exeption')
                 return jsonify({'message': 'Wrong email or password'}), 401
         return redirect(url_for('showRestaurants'))
 
