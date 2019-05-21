@@ -25,11 +25,11 @@ Use `vagrant up` to bring the virtual machine online and `vagrant ssh` to login.
 
 ## Pictures
 
-![Restaurant list](https://github.com/xwxnumber1xwx/FLASK_Restaurant-catalog/blob/master/design/restaurantlist.jpg)
-![Menu List](https://github.com/xwxnumber1xwx/FLASK_Restaurant-catalog/blob/master/design/MenuItem.jpg)
-![Sign in](https://github.com/xwxnumber1xwx/FLASK_Restaurant-catalog/blob/master/design/sign-in.jpg)
-![Delete item](https://github.com/xwxnumber1xwx/FLASK_Restaurant-catalog/blob/master/design/deleteItem.jpg)
-![RESTful Api response](https://github.com/xwxnumber1xwx/FLASK_Restaurant-catalog/blob/master/design/apiresponse.jpg)
+![Restaurant list](https://github.com/xwxnumber1xwx/FLASK_Restaurant-catalog/blob/master/design/restaurantlist.JPG)
+![Menu List](https://github.com/xwxnumber1xwx/FLASK_Restaurant-catalog/blob/master/design/MenuItem.JPG)
+![Sign in](https://github.com/xwxnumber1xwx/FLASK_Restaurant-catalog/blob/master/design/sign-in.JPG)
+![Delete item](https://github.com/xwxnumber1xwx/FLASK_Restaurant-catalog/blob/master/design/deleteItem.JPG)
+![RESTful Api response](https://github.com/xwxnumber1xwx/FLASK_Restaurant-catalog/blob/master/design/apiresponse.JPG)
 
 
 ## MIT LICENCE
