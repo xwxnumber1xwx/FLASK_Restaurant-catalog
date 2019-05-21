@@ -4,7 +4,7 @@
     <h1 class="title">Restaurants</h1>
     <div class="bar"></div>
     <div class="loggin-info">
-        logged as {{name}} <img class="picture" src="{{picture}}" alt="picture from {{name}}">
+        logged as {{name}} {% if picture != '' %}<img class="picture" src="{{picture}}" alt="picture from {{name}}"> {% endif %}
     </div>
     {% include 'messages.html' %}
     <nav class="nav-container">

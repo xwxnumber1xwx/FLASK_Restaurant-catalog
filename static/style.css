@@ -9,7 +9,11 @@
 }
 
 body {
-    background: url('./restaurant.jpg.jpg');
+    background: url('./restaurant.jpg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     margin: 0;
     color: #3E3E3E;
     margin: auto;
@@ -87,6 +91,10 @@ a {
     height: 3px;
     padding-top: 0;
     background: #3E3E3E;
+}
+
+.thin-bar {
+    height: 1px!important;
 }
 
 @media screen and (min-width: 1100px) {
@@ -216,6 +224,10 @@ a {
     margin: 70px auto 20px;
 }
 
+.vc-title-register {
+    margin: 20px auto 10px!important;
+}
+
 .vc-form {
     margin: auto;
     width: 450px;
@@ -234,6 +246,12 @@ a {
     border: 0;
     box-shadow: none;
     bottom: 20px;
+}
+
+.vc-register {
+    top: 0;
+    right: 0;
+    margin: 10px;
 }
 
 .vc-confirm {
@@ -263,6 +281,12 @@ a {
     margin: 10px 0 0 100px;
 }
 
+.vc-input-register {
+    text-align: center;
+    font-family: 'ScriptMTBold', Arial, Helvetica;
+    font-size: 20px;
+}
+
 .vc-input-center {
     width: 400px;
     position: absolute;
@@ -271,6 +295,11 @@ a {
     transform: translate(-50%, -50%);
     text-align: center;
     font-size: 40px;
+}
+
+.vc-label {
+    display: grid;
+    margin: 0 auto 7px;
 }
 
 .loggin-info {
@@ -340,17 +369,10 @@ a {
     font-family: 'Roboto', arial, sans-serif;
 }
 
-
 .vc-google-center {
     border: 1px solid #3E3E3E;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
+    display: block;
+    margin: 0 auto 20px;
 }
 
 .messages {

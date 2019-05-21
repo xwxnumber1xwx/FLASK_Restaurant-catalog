@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block content %}
+<section class="visit-card">
+    <h2 class="vc-title vc-title-register">Register</h2>
+    <form class="vc-form" action="{{url_for('register')}}" method="post">
+        <label class="vc-label" for="name">Name <input class="vc-input-register" type="text" minlength="6" maxlength="30"
+                name="name" placeholder="username" required></label>
+        <label class="vc-label" for="email">Email<input class="vc-input-register" type="email" minlength="5" maxlength="30"
+                name="email" placeholder="email" required></label>
+        <label class="vc-label" for="password">Password<input class="vc-input-register" type="password" maxlength="30"
+                name="password" placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                required></label>
+        <input class="vc-buttons vc-confirm" type="submit" value="Confirm">
+    </form>
+    <a class="vc-buttons vc-cancel" href="{{url_for('showRestaurants')}}">Cancel</a>
+</section>
+{% endblock %}
