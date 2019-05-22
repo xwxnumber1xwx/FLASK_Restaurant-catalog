@@ -5,8 +5,6 @@ from database_setup import Base, Restaurant, MenuItem, User
 from flask import session as login_session
 import random
 import string
-from oauth2client.client import flow_from_clientsecrets
-from oauth2client.client import FlowExchangeError
 from apiclient import discovery
 from oauth2client import client
 import httplib2
@@ -14,6 +12,7 @@ import json
 from flask import make_response
 import requests
 import os
+import bleach # -> input validation
 from pprint import pprint
 import urllib.request
 import google.oauth2.credentials
@@ -44,8 +43,8 @@ def login():
         return render_template('login.html', STATE=state)
     if request.method == 'POST':
         form = request.form
-        if form['email'] and form['password']:
-            email = form['email']
+        email =  bleach.clean(form['email'])
+        if email and form['password']:
             password = form['password']
             session = databaseConnection()
             try:
@@ -73,8 +72,8 @@ def register():
     if request.method == 'GET':
         return render_template('register.html')
     if request.method == 'POST':
-        username = request.form['name']
-        email = request.form['email']
+        username = bleach.clean(request.form['name'])
+        email = bleach.clean(request.form['email'])
         password = request.form['password']
         if username is None or password is None:
             print("missing arguments")
@@ -94,7 +93,7 @@ def register():
         login_session['username'] = username
         login_session['email'] = email
         login_session['picture'] = ''
-        login_session['user_id'] = getUserIdDB(login_session['email'])
+        login_session['user_id'] = getUserIdDB(email)
 
         flash(username + ' is now registered')
         return redirect(url_for('showRestaurants'))
@@ -218,10 +217,11 @@ def newRestaurant():
         return redirect('/login')
     session = databaseConnection()
     if request.method == 'POST':
-        newRestaurant = Restaurant(name=request.form['name'], user_id=login_session['user_id'])
+        restaurant_name = bleach.clean(request.form['name'])
+        newRestaurant = Restaurant(name=restaurant_name, user_id=login_session['user_id'])
         session.add(newRestaurant)
         session.commit()
-        flash('restaurant %s added on Database' % request.form['name'])
+        flash('restaurant %s added on Database' % restaurant_name)
         return redirect(url_for('showRestaurants'))
     else:
         return render_template('newrestaurant.html')
@@ -234,11 +234,12 @@ def editRestaurant(restaurant_id):
     session = databaseConnection()
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     if request.method == 'POST':
-        if request.form['name']:
-            restaurant.name = request.form['name']
+        edit_name = bleach.clean(request.form['name'])
+        if edit_name:
+            restaurant.name = edit_name
             session.add(restaurant)
             session.commit()
-            flash('restaurant %s updated' % request.form['name'])
+            flash('restaurant %s updated' % edit_name)
         return redirect(url_for('showRestaurants'))
     else:
         return render_template('editrestaurant.html', restaurant=restaurant)
@@ -279,11 +280,18 @@ def newMenuItem(restaurant_id):
     session = databaseConnection()
     if request.method == 'POST':
         form = request.form
-        newItem = MenuItem(name=form['name'], price=form['price'],
-                           description=form['description'], course=form['course'], restaurant_id=restaurant_id, user_id=login_session['user_id'])
-        session.add(newItem)
-        session.commit()
-        flash('%s added on Database' % request.form['name'])
+        item_name = bleach.clean(form['name'])
+        item_price = bleach.clean(form['price'])
+        item_description = bleach.clean(form['description'])
+        item_course = bleach.clean(form['course'])
+        if item_name and item_price and item_course:
+            newItem = MenuItem(name = item_name, price=item_price,
+                            description=item_description, course=item_course, restaurant_id=restaurant_id, user_id=login_session['user_id'])
+            session.add(newItem)
+            session.commit()
+            flash('%s added on Database' % item_name)
+        else:
+            flash('Something went wrong, please fill in all fields')
         return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
         courses = session.query(MenuItem).group_by('course').all()
@@ -300,17 +308,21 @@ def editMenuItem(restaurant_id, menu_id):
 
     if request.method == 'POST':
         form = request.form
-        if form['name']:
-            itemToEdit.name = form['name']
-        if form['price']:
-            itemToEdit.price = form['price']
-        if form['description']:
-            itemToEdit.description = form['description']
-        if form['course']:
-            itemToEdit.course = form['course']
+        item_name = bleach.clean(form['name'])
+        item_price = bleach.clean(form['price'])
+        item_description = bleach.clean(form['description'])
+        item_course = bleach.clean(form['course'])
+        if item_name:
+            itemToEdit.name = item_name
+        if item_price:
+            itemToEdit.price = item_price
+        if item_description:
+            itemToEdit.description = item_description
+        if item_course:
+            itemToEdit.course = item_course
         session.add(itemToEdit)
         session.commit()
-        flash('%s updated' % request.form['name'])
+        flash('%s updated' % item_name)
         return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
         courses = session.query(MenuItem).group_by('course').all()
@@ -365,8 +377,10 @@ def JSONRestaurants():
         restaurants = session.query(Restaurant).all()
         return jsonify(Restaurant=[i.serialize for i in restaurants])
     elif request.method == 'POST':
-        if request.json.get('name') and request.json.get('user_id'):
-            restaurant = Restaurant(name=request.json.get('name'), user_id=request.json.get('user_id'))
+        name= bleach.clean(request.json.get('name'))
+        user_id= bleach.clean(request.json.get('user_id'))
+        if name and user_id:
+            restaurant = Restaurant(name=name, user_id=user_id)
             session.add(restaurant)
             session.commit()
             return jsonify(Restaurant=[restaurant.serialize])
